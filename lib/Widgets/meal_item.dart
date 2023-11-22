@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+
 import 'package:meals_app/Widgets/meal_item_trait.dart';
+
 import 'package:transparent_image/transparent_image.dart';
 
 import 'package:meals_app/Models/meal.dart';
 
 class MealItem extends StatelessWidget {
+
   const MealItem({super.key, required this.meal, required this.onSelectMeal});
 
   final Meal meal;
@@ -20,6 +23,7 @@ class MealItem extends StatelessWidget {
         meal.affordability.name.substring(1);
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -27,6 +31,7 @@ class MealItem extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8),
       ),
+
       clipBehavior: Clip.hardEdge,
       elevation: 2,
       child: InkWell(
@@ -67,6 +72,7 @@ class MealItem extends StatelessWidget {
                     const SizedBox(
                       height: 12,
                     ),
+
                     Row(mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         MealItemTrait(
@@ -82,12 +88,10 @@ class MealItem extends StatelessWidget {
                         MealItemTrait(
                             icon: Icons.attach_money, label: affordabilityText),
                       ],
-                    )
-                  ],
                 ),
-              ),
+          ],),
             )
-          ],
+        )],
         ),
       ),
     );
