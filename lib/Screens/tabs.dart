@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/Models/meal.dart';
-
+import 'package:meals_app/Screens/filters.dart';
 import 'package:meals_app/Screens/categories.dart';
 import 'package:meals_app/Screens/mainDrawer.dart';
 import 'package:meals_app/Screens/meals.dart';
@@ -30,7 +30,8 @@ class _TabsScreen extends State<TabsScreen> {
     if (isExisting) {
       setState(() {
         _favouriteMeals.remove(meal);
-        showInfoMessage('Removed from Favourites');});
+        showInfoMessage('Removed from Favourites');
+      });
     } else {
       setState(() {
         _favouriteMeals.add(meal);
@@ -43,6 +44,15 @@ class _TabsScreen extends State<TabsScreen> {
     setState(() {
       _selectedPageIndex = index;
     });
+  }
+
+  void _setScreen(String identifier) {
+    if (identifier == 'filters') {
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (ctx) => const FiltersScreen())
+      );
+      } else {
+        Navigator.of(context).pop();
+    }
   }
 
   @override
@@ -61,7 +71,7 @@ class _TabsScreen extends State<TabsScreen> {
       appBar: AppBar(
         title: Text(activePagetitle),
       ),
-      drawer: const MainDrawer(),
+      drawer: MainDrawer(onSelectedScreen: _setScreen),
       body: activePage,
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
