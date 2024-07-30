@@ -19,7 +19,8 @@ class CategoriesScreen extends StatelessWidget {
                   meals: filteredMeals,
                 )));
   }
-
+// test 
+final int test;
   @override
   Widget build(context) {
     return Scaffold(
